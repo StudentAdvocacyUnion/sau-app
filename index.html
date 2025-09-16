@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAU</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0033A0">
+  <!-- iOS full-screen + icon -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <style>
+    :root { --sau-blue:#0033A0; --sau-yellow:#FFD100; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:#fff; color:#111; }
+    header { background:var(--sau-blue); color:white; padding:16px 20px; position:sticky; top:0; }
+    .brand { font-weight:800; letter-spacing:.3px; font-size:20px; }
+    .badge { background:var(--sau-yellow); color:#111; padding:2px 8px; border-radius:999px; font-size:12px; margin-left:8px;}
+    .wrap { padding:20px; max-width:900px; margin:0 auto; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    .card { border:1px solid #eee; border-radius:14px; padding:16px; box-shadow:0 1px 6px rgba(0,0,0,.06); }
+    .card h2, .card h3 { margin:6px 0 10px; }
+    a.btn { display:inline-block; text-decoration:none; border:1px solid var(--sau-blue); padding:10px 14px; border-radius:10px; }
+    a.btn:hover { background:var(--sau-blue); color:#fff; }
+    footer { text-align:center; font-size:12px; color:#666; padding:24px 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">SAU <span class="badge">App</span></div>
+  </header>
+
+  <div class="wrap">
+    <div class="grid">
+      <div class="card">
+        <h2>Start here</h2>
+        <p>Quick links for students.</p>
+        <p>
+          <a class="btn" href="https://sites.google.com/rowlandschools.org/nogales-ssc" target="_blank" rel="noopener">SSC</a>
+          <a class="btn" href="https://example.com/sau-resources" target="_blank" rel="noopener">Resources</a>
+          <a class="btn" href="https://example.com/submit" target="_blank" rel="noopener">Submit a Proposal</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Install the app</h3>
+        <ol>
+          <li>Open this page in Safari (iPhone) or Chrome (Android).</li>
+          <li>Tap Share/Menu → <strong>Add to Home Screen</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>Updates</h3>
+        <p>This app caches itself so it works offline. When you publish changes, it will auto-refresh on next open.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© Student Advocacy Union</footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(console.error);
+      });
+    }
+  </script>
+</body>
+</html>
